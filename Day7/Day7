@@ -1,0 +1,29 @@
+multer 모듈
+- 파일을 업로드하기 위한 익스프레스 미들웨어
+- npm i multer
+
+    const 객체명 = multer.diskStorage({
+           destination:(req, file, callback)=>{
+               파일을 저장할 디렉토리를 설정
+           },
+           filename: (req, file, callback =>{
+               파일이름을 설정
+           })
+    });
+
+    const 객체명 = multer({
+        storage: diskStorage 객체
+        limit: {
+            files: 파일전송개수,
+            fileSize: 파일 전송 용량
+
+        }
+
+    });
+
+    serve-static 모듈
+    -특정 폴더를 요청에 의해 직접 파일에 접근할 수 있도록 기능을 제공하는 익스프레스 미들웨이
+
+    morgan 모듈
+    - 로그를 관리하기 위한 별도의 라이브러리 모듈
+    - npm i morgan

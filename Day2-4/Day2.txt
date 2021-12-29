@@ -1,0 +1,58 @@
+프로젝트 복원
+npm install
+
+express 모듈
+use() : 미들웨어를 등록
+redirect() : 웹 페이지의 경로를 강제로 이동
+
+http://127.0.0.1:3000/?userid=apple
+php : $userid = $_GET['userid'];
+node.js : const userid = req.query.userid;
+
+query : 클라이언트에서 GET방식으로 전송한 요청 파라미터를 확인
+body : 클라이언트에서 POST방식으로 전송한 요청 파라미터를 확인
+    ✔ 단, post방식을 통한 요청 파라미터를 확인하려면 body-parser와 같은 모듈을 사용해야 함
+
+<form method="post" action="./">
+    ...
+</form>
+
+
+포스트맨
+https://www.postman.com/downloads/
+
+REST ?
+(Representational State Transfer)
+자원을 이름으로 구분하여 해당 자원의 상태를 주고 받는 것을 의미
+
+✔ app.use(bodyParser.urlencoded({extended: false}));
+- bodyParser 미들웨어의 여러 옵션 중에 extended를 false로 설정하면 node.js에 기본으로 내장된 queryString이 true일 때 따로 설치가 필요한 npm qs 라이브러리를 사용
+
+
+Router 미들웨어
+- 사용자의 다양한 요청이 들어왔을때 use() 메소드로 설정한 미들웨어가 항상 호출되는 불편한 점을 개선하여 만들어진 모듈
+
+Router 객체
+const 객체명 = express.Router();
+
+객체명.route('/호출할URL').get(실행할 함수);
+객체명.route('/호출할URL').post(실행할 함수);
+
+익스프레스에 Router 객체 적용
+app.use('/', 객체명);
+
+
+템플릿 엔진
+- view를 구현하기 위한 템플릿
+
+EJS(Embedded JavaScript) 모듈
+- 특정한 형식인 파일로 부터 HTML 페이지를 생성하는 모듈
+- npm i ejs
+
+EJS 파일 형식의 특수 코드
+<% ~~~~~ code ~~~~ %> : 자바스크립트 코드를 입력하는 영역
+<%=변수%> : 데이터를 출력
+<%-변수%> : ejs파일 전체를 전달
+
+EJS 데이터 전달
+render() : 메소드의 매개변수에 전달하고자 하는 데이터를 입력
